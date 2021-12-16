@@ -26,6 +26,7 @@ const NoteList: FC<{}> = (): ReactElement => {
         if (event.key === 'Enter') {
             const note: CreateNoteDto = {
                 title: event.currentTarget.value,
+                details:event.currentTarget.value,
             };
             createNote(note);
             event.currentTarget.value = '';

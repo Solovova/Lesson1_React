@@ -6,7 +6,7 @@ const userManagerSettings: UserManagerSettings = {
     redirect_uri: 'http://localhost:3000/signin-oidc',
     response_type: 'code',
     scope: 'openid profile NotesWebAPI',
-    authority: 'https://localhost:44347/',
+    authority: 'https://localhost:44347',
     post_logout_redirect_uri: 'http://localhost:3000/signout-oidc',
 };
 
