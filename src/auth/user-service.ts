@@ -18,6 +18,11 @@ export async function loadUser() {
     setAuthHeader(token);
 }
 
+export function isAuthorized():boolean {
+    const token = localStorage.getItem('token');
+    return token !== undefined
+}
+
 export const signinRedirect = () => userManager.signinRedirect();
 
 export const signinRedirectCallback = () =>

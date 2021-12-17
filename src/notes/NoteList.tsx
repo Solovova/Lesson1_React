@@ -1,6 +1,7 @@
 import React, {FC, ReactElement, useRef, useEffect, useState} from 'react';
 import {CreateNoteDto, Client, NoteLookupDto} from '../api/api';
 import {FormControl} from 'react-bootstrap';
+import {isAuthorized} from '../auth/user-service'
 
 const apiClient = new Client('https://localhost:44338');
 
@@ -34,18 +35,31 @@ const NoteList: FC<{}> = (): ReactElement => {
         }
     };
 
-    return (
-        <div>
-            Notes
+    const token = localStorage.getItem('token');
+    if (isAuthorized()) {
+        return (
             <div>
-                <FormControl ref={textInput} onKeyPress={handleKeyPress}/>
+                Notes\n
+                Token:{token}
+                <div>
+                    <FormControl ref={textInput} onKeyPress={handleKeyPress}/>
+                </div>
+                <section>
+                    {notes?.map((note) => (
+                        <div>{note.title}</div>
+                    ))}
+                </section>
             </div>
-            <section>
-                {notes?.map((note) => (
-                    <div>{note.title}</div>
-                ))}
-            </section>
-        </div>
-    );
+        );
+    }else {
+        return (
+            <div>
+                Notes
+                No authorized
+            </div>
+        );
+    }
+
+
 };
 export default NoteList;

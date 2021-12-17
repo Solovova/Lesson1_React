@@ -1,15 +1,15 @@
-import React, { FC, useEffect, useRef } from 'react';
-import { User, UserManager } from 'oidc-client';
-import { setAuthHeader } from './auth-headers';
+import React, {FC, useEffect, useRef} from 'react';
+import {User, UserManager} from 'oidc-client';
+import {setAuthHeader} from './auth-headers';
 
 type AuthProviderProps = {
     userManager: UserManager;
 };
 
 const AuthProvider: FC<AuthProviderProps> = ({
-    userManager: manager,
-    children,
-}): any => {
+                                                 userManager: manager,
+                                                 children,
+                                             }): any => {
     let userManager = useRef<UserManager>();
     useEffect(() => {
         userManager.current = manager;
