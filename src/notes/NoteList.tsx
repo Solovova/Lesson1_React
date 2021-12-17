@@ -1,8 +1,8 @@
-import React, { FC, ReactElement, useRef, useEffect, useState } from 'react';
-import { CreateNoteDto, Client, NoteLookupDto } from '../api/api';
-import { FormControl } from 'react-bootstrap';
+import React, {FC, ReactElement, useRef, useEffect, useState} from 'react';
+import {CreateNoteDto, Client, NoteLookupDto} from '../api/api';
+import {FormControl} from 'react-bootstrap';
 
-const apiClient = new Client('https://localhost:5001');
+const apiClient = new Client('https://localhost:44338');
 
 async function createNote(note: CreateNoteDto) {
     await apiClient.create('1.0', note);
@@ -26,7 +26,7 @@ const NoteList: FC<{}> = (): ReactElement => {
         if (event.key === 'Enter') {
             const note: CreateNoteDto = {
                 title: event.currentTarget.value,
-                details:event.currentTarget.value,
+                details: event.currentTarget.value,
             };
             createNote(note);
             event.currentTarget.value = '';
@@ -38,7 +38,7 @@ const NoteList: FC<{}> = (): ReactElement => {
         <div>
             Notes
             <div>
-                <FormControl ref={textInput} onKeyPress={handleKeyPress} />
+                <FormControl ref={textInput} onKeyPress={handleKeyPress}/>
             </div>
             <section>
                 {notes?.map((note) => (

@@ -1,7 +1,7 @@
-import { FC, ReactElement } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {FC, ReactElement} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
-import userManager, { loadUser, signinRedirect } from './auth/user-service';
+import userManager, {loadUser, signinRedirect} from './auth/user-service';
 import AuthProvider from './auth/auth-provider';
 import SignInOidc from './auth/SigninOidc';
 import SignOutOidc from './auth/SignoutOidc';
@@ -16,12 +16,12 @@ const App: FC<{}> = (): ReactElement => {
                 <AuthProvider userManager={userManager}>
                     <Router>
                         <Switch>
-                            <Route exact path="/" component={NoteList} />
+                            <Route exact path="/" component={NoteList}/>
                             <Route
                                 path="/signout-oidc"
                                 component={SignOutOidc}
                             />
-                            <Route path="/signin-oidc" component={SignInOidc} />
+                            <Route path="/signin-oidc" component={SignInOidc}/>
                         </Switch>
                     </Router>
                 </AuthProvider>
